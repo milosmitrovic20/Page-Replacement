@@ -9,17 +9,17 @@ namespace Page_Replacement
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string niz;
-            niz = textBox1.Text;
+            string niz = textBox1.Text;
+            int n = int.Parse(textBox2.Text);
             string str = string.Join("", niz.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
+            int[] a = new int[str.Length];
 
             if (comboBox1.Text == "First In First Out (FIFO)")
             {
                 this.Hide();
-
                 Form2 fifoforma = new Form2();
                 fifoforma.Show();
-                fifoforma.promeniText(str);
+                fifoforma.ubaci_u_tabelu(str, n);
             }   
 
             else if (comboBox1.Text == "Optimal (OPT)")
