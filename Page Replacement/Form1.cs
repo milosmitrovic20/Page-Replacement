@@ -15,10 +15,11 @@ namespace Page_Replacement
 
             if (comboBox1.Text == "First In First Out (FIFO)")
             {
-                //this.Hide();
-                //Form2 fifoforma = new Form2();
-                //fifoforma.Show();
-                textBox3.Text = str;
+                this.Hide();
+
+                Form2 fifoforma = new Form2();
+                fifoforma.Show();
+                fifoforma.promeniText(str);
             }   
 
             else if (comboBox1.Text == "Optimal (OPT)")

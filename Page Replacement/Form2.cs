@@ -23,5 +23,9 @@ namespace Page_Replacement
             Form1 forma1 = new Form1();
             forma1.Show();
         }
+        public void promeniText(string tekstZaMenjanje)
+        {
+            textBox1.Text = tekstZaMenjanje;
+        }
     }
 }
