@@ -16,5 +16,12 @@ namespace Page_Replacement
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 forma1 = new Form1();
+            forma1.Show();
+        }
     }
 }

@@ -9,12 +9,24 @@ namespace Page_Replacement
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.Text == "FIFO")
+            string niz;
+            niz = textBox1.Text;
+            string str = string.Join("", niz.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
+
+            if (comboBox1.Text == "First In First Out (FIFO)")
+            {
+                //this.Hide();
+                //Form2 fifoforma = new Form2();
+                //fifoforma.Show();
+                textBox3.Text = str;
+            }   
+
+            else if (comboBox1.Text == "Optimal (OPT)")
             {
                 this.Hide();
-                Form2 fifoforma = new Form2();
-                fifoforma.Show();
-            }   
+                Form4 optimalforma = new Form4();
+                optimalforma.Show();
+            }
 
             else
             {
