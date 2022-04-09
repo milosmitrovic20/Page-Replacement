@@ -27,6 +27,7 @@ namespace Page_Replacement
                 this.Hide();
                 Form4 optimalforma = new Form4();
                 optimalforma.Show();
+                optimalforma.ubaci_u_tabelu(str, n);
             }
 
             else
