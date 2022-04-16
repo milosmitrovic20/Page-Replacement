@@ -74,7 +74,7 @@ namespace Page_Replacement
 
                     for (int j = 0; j < okvir; j++)
                     {
-                        dataGridView1.Rows.Add(Convert.ToString(temp[j]));
+                        this.dataGridView1.Rows[j].Cells[i].Value = Convert.ToString(temp[j]);
                     }
                 }
 
@@ -84,7 +84,7 @@ namespace Page_Replacement
 
                     for (int j = 0; j < okvir; j++)
                     {
-                        dataGridView1.Rows.Add(Convert.ToString(temp[j]));
+                        this.dataGridView1.Rows[j].Cells[i].Value = Convert.ToString(temp[j]);
                     }
 
                     //Console.Write("*");

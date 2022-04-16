@@ -128,7 +128,7 @@ namespace Page_Replacement
 
                 for (j = 0; j < okvir; ++j)
                 {
-                    dataGridView1.Rows.Add(Convert.ToString(frames[j]));
+                    this.dataGridView1.Rows[j].Cells[i].Value = Convert.ToString(frames[j]);
                 }
             }
 
