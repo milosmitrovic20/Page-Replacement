@@ -42,6 +42,7 @@ namespace Page_Replacement
                 this.Hide();
                 Form3 lruforma = new Form3();
                 lruforma.Show();
+                lruforma.ubaci_u_tabelu(str, n);
             }
 
             else

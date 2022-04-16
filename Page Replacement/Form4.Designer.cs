@@ -49,7 +49,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(167, 24);
+            this.dataGridView1.Location = new System.Drawing.Point(167, 59);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -59,9 +59,9 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(167, 582);
+            this.textBox1.Location = new System.Drawing.Point(167, 636);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(543, 27);
+            this.textBox1.Size = new System.Drawing.Size(216, 27);
             this.textBox1.TabIndex = 3;
             // 
             // Form4
