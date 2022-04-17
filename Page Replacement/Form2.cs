@@ -30,14 +30,18 @@ namespace Page_Replacement
         {
             dataGridView1.ColumnCount = tekstZaMenjanje.Length;
             dataGridView1.RowCount = okvir;
+
             BigInteger broj = BigInteger.Parse(tekstZaMenjanje);
             BigInteger[] a = new BigInteger[tekstZaMenjanje.Length];
+
             for (int i = 0; i < tekstZaMenjanje.Length; i++)
             {
                 a[i] = broj % 10;
                 broj /= 10;
             }
+
             Array.Reverse(a);
+
             for (int i = 0; i < tekstZaMenjanje.Length; i++)
             {
                 dataGridView1.Columns[i].Name = Convert.ToString(a[i]);
@@ -74,7 +78,12 @@ namespace Page_Replacement
 
                     for (int j = 0; j < okvir; j++)
                     {
+                        //Color clr = ColorTranslator.FromHtml("#d3d0cb");  // povezivanje boja sa hex kodom
+                        //dataGridView1.Columns[i].Width = 70;  // podesavanje visine i duzine
+                        //dataGridView1.Rows[j].Height = 40;    // podesavanje visine i duzine
                         this.dataGridView1.Rows[j].Cells[i].Value = Convert.ToString(temp[j]);
+                        //this.dataGridView1.ForeColor = Color.Black;  // boja slova
+                        //dataGridView1.Columns[i].DefaultCellStyle.BackColor = clr;  // boja pozadine
                     }
                 }
 
@@ -84,19 +93,28 @@ namespace Page_Replacement
 
                     for (int j = 0; j < okvir; j++)
                     {
+                        //dataGridView1.Columns[i].Width = 70;
+                        //dataGridView1.Rows[j].Height = 30;
                         this.dataGridView1.Rows[j].Cells[i].Value = Convert.ToString(temp[j]);
+                        //Color clr = ColorTranslator.FromHtml("#d3d0cb");
+                        //dataGridView1.Columns[i].DefaultCellStyle.BackColor = clr;
                     }
-
-                    //Console.Write("*");
                 }
+            }
 
-                //Console.WriteLine();
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
             // ispis
 
-            textBox1.Text = "Broj zvezdica: " + broj_zvezdica;
-            //Console.WriteLine("Broj zvezdica: " + broj_zvezdica);
+            label2.Text = "Broj zvezdica: " + broj_zvezdica;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("FIFO (First In, First Out) algoritam je jedan od pristupa koji se prirodno nameće i predlaže da se iz memorije izbacuju stranice po redosledu po kojem su učitane. Loša osobina ovog algoritma je činjenica da se u memoriju obično na početku učitavaju stranice koje su važne i često se koriste, a one bi ovakvim pristupom bile relativno brzo izbačene.");
         }
     }
 }

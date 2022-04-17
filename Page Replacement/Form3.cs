@@ -29,14 +29,18 @@ namespace Page_Replacement
         {
             dataGridView1.ColumnCount = tekstZaMenjanje.Length;
             dataGridView1.RowCount = okvir;
+
             BigInteger broj = BigInteger.Parse(tekstZaMenjanje);
             BigInteger[] a = new BigInteger[tekstZaMenjanje.Length];
+
             for (int i = 0; i < tekstZaMenjanje.Length; i++)
             {
                 a[i] = broj % 10;
                 broj /= 10;
             }
+
             Array.Reverse(a);
+
             for (int i = 0; i < tekstZaMenjanje.Length; i++)
             {
                 dataGridView1.Columns[i].Name = Convert.ToString(a[i]);
@@ -48,7 +52,7 @@ namespace Page_Replacement
             int[] temp = new int[20];
             int[] b = new int[20];
             int[] c2 = new int[20];
-
+            int broj_zvezdica = 0;
             temp[k] = (int)a[k];
             this.dataGridView1.Rows[0].Cells[0].Value = Convert.ToString(temp[k]);
             c++;
@@ -104,14 +108,28 @@ namespace Page_Replacement
                     }
                 }
 
+                else
+                {
+                    broj_zvezdica++;
+                }
+
                 for (j = 0; j < k; j++)
                     this.dataGridView1.Rows[j].Cells[i].Value = Convert.ToString(temp[j]);
 
                 // ispis
 
-                //textBox1.Text = "Broj zvezdica: " + broj_zvezdica;
-                //Console.WriteLine("Broj zvezdica: " + broj_zvezdica);
+                label2.Text = "Broj zvezdica: " + broj_zvezdica;
             }
+
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("LRU (Least Recently Used) algoritam se zasniva na ideji da se iz memorije izbaci stranica koja je korišćena najdalje u prošlosti u odnosu na ostale stranice. U ovom pristupu pokušava se predviđanje dalje sekvence zahtevanih stranica na osnovu prethodnog izvršavanja programa.");
         }
     }
 }

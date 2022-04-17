@@ -33,7 +33,7 @@ namespace Page_Replacement
                 optimalforma.ubaci_u_tabelu(str, n);
             }
 
-            else if (comboBox1.Text == "Last Recently Used (LRU)" && !String.IsNullOrEmpty(textBox1.Text) && !String.IsNullOrEmpty(textBox2.Text))
+            else if (comboBox1.Text == "Least Recently Used (LRU)" && !String.IsNullOrEmpty(textBox1.Text) && !String.IsNullOrEmpty(textBox2.Text))
             {
                 string niz = textBox1.Text;
                 int n = int.Parse(textBox2.Text);
