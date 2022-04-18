@@ -132,7 +132,17 @@ namespace Page_Replacement
                 }
             }
 
-            textBox1.Text = "Broj zvezdica : " + (tekstZaMenjanje.Length - faults);
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+            label2.Text = "Broj zvezdica : " + (tekstZaMenjanje.Length - faults);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Beladijev pristup predstavlja najbolji mogući način za izbor stranice koja će biti izbačena iz memorije. Ovaj pristup se naziva Beladijev optimalni algoritam za zamenu stranice. U trenutku kada nastane promašaj stranice, određeni skup stranica jednog procesa nalazi se u memoriji. Neke od tih stranica mogu biti potrebne već u sledećoj ili u nekoj od skorijih instrukcija.");
         }
     }
 }

@@ -52,6 +52,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(82)))), ((int)(((byte)(102)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
