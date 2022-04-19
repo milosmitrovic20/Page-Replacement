@@ -45,6 +45,8 @@ namespace Page_Replacement
             for (int i = 0; i < tekstZaMenjanje.Length; i++)
             {
                 dataGridView1.Columns[i].Name = Convert.ToString(a[i]);
+                //dataGridView1.Columns[i].DefaultCellStyle.BackColor = Color.Silver;
+                this.dataGridView1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
             // FIFO algoritam

@@ -29,17 +29,21 @@ namespace Page_Replacement
         {
             dataGridView1.ColumnCount = tekstZaMenjanje.Length;
             dataGridView1.RowCount = okvir;
+
             BigInteger broj = BigInteger.Parse(tekstZaMenjanje);
             BigInteger[] a = new BigInteger[tekstZaMenjanje.Length];
+
             for (int i = 0; i < tekstZaMenjanje.Length; i++)
             {
                 a[i] = broj % 10;
                 broj /= 10;
             }
             Array.Reverse(a);
+
             for (int i = 0; i < tekstZaMenjanje.Length; i++)
             {
                 dataGridView1.Columns[i].Name = Convert.ToString(a[i]);
+                this.dataGridView1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
             // Optimalni algoritam

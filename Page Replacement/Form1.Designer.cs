@@ -86,10 +86,9 @@
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Location = new System.Drawing.Point(540, 328);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 24);
+            this.button1.Size = new System.Drawing.Size(82, 35);
             this.button1.TabIndex = 4;
             this.button1.Text = "odredi";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
