@@ -141,7 +141,11 @@ namespace Page_Replacement
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
-            label2.Text = "Broj zvezdica : " + (tekstZaMenjanje.Length - faults);
+            // ispis
+
+            label2.Text = "Broj pogodaka : " + (tekstZaMenjanje.Length - faults);
+            label3.Text = "Broj promašaja : " + faults;
+            label4.Text = "Ukupan broj referenci : " + tekstZaMenjanje.Length;
         }
 
         private void button2_Click(object sender, EventArgs e)

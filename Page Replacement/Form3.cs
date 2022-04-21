@@ -119,7 +119,9 @@ namespace Page_Replacement
 
                 // ispis
 
-                label2.Text = "Broj zvezdica: " + broj_zvezdica;
+                label2.Text = "Broj pogodaka : " + broj_zvezdica;
+                label3.Text = "Broj promašaja : " + (tekstZaMenjanje.Length - broj_zvezdica);
+                label4.Text = "Ukupan broj referenci : " + tekstZaMenjanje.Length;
             }
 
             foreach (DataGridViewColumn column in dataGridView1.Columns)
