@@ -50,8 +50,8 @@ namespace Page_Replacement
             // Optimalni algoritam
 
             int flag1, flag2, flag3, j, k, pos = 0, max, faults = 0;
-            char[] frames = new char[10];
-            int[] temp = new int[10];
+            char[] frames = new char[okvir];
+            int[] temp = new int[okvir];
 
             for (int i = 0; i < okvir; i++)
             {

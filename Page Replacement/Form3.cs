@@ -50,9 +50,9 @@ namespace Page_Replacement
             // LRU algoritam
 
             int c = 0, c1, j, k = 0, r, t;
-            int[] temp = new int[20];
-            int[] b = new int[20];
-            int[] c2 = new int[20];
+            int[] temp = new int[okvir];
+            int[] b = new int[okvir];
+            int[] c2 = new int[okvir];
             int broj_zvezdica = 0;
             temp[k] = (int)a[k];
             this.dataGridView1.Rows[0].Cells[0].Value = Convert.ToString(temp[k]);
