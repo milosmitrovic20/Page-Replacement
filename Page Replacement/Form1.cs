@@ -1,4 +1,4 @@
-namespace Page_Replacement
+﻿namespace Page_Replacement
 {
     public partial class Form1 : Form
     {
@@ -52,6 +52,11 @@ namespace Page_Replacement
             {
                 MessageBox.Show("Niste uneli dovoljno podataka! Probajte ponovo!");
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Virtuelna memorija (Virtual memory) predstavlja način upravljanja memorijom koji omogućava da se procesu na raspolaganje stavi memorija koja je drugačije veličine od one koja stvarno (fizički) postoji u sistemu. Pri tome je operativni sistem zadužen da omogući preslikavanje virtuelne memorije u fizičku memoriju. Postoje razni algoritmi za izbor stranice koja će biti izbačena iz memorije, a neki od njih su: First In First Out (FIFO), Optimal (OPT) i Least Recently Used (LRU).");
         }
     }
 }

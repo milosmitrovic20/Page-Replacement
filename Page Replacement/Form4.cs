@@ -28,7 +28,7 @@ namespace Page_Replacement
         public void ubaci_u_tabelu(string tekstZaMenjanje, int okvir)
         {
             dataGridView1.ColumnCount = tekstZaMenjanje.Length;
-            dataGridView1.RowCount = okvir;
+            dataGridView1.RowCount = okvir + 1;
 
             BigInteger broj = BigInteger.Parse(tekstZaMenjanje);
             BigInteger[] a = new BigInteger[tekstZaMenjanje.Length];
@@ -38,6 +38,7 @@ namespace Page_Replacement
                 a[i] = broj % 10;
                 broj /= 10;
             }
+
             Array.Reverse(a);
 
             for (int i = 0; i < tekstZaMenjanje.Length; i++)
@@ -65,6 +66,7 @@ namespace Page_Replacement
                 {
                     if (Convert.ToInt32(frames[j] - 48) == a[i])
                     {
+                        this.dataGridView1.Rows[okvir].Cells[i].Value = "*";
                         flag1 = flag2 = 1;
                         break;
                     }

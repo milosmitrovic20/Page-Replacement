@@ -28,7 +28,7 @@ namespace Page_Replacement
         public void ubaci_u_tabelu(string tekstZaMenjanje, int okvir)
         {
             dataGridView1.ColumnCount = tekstZaMenjanje.Length;
-            dataGridView1.RowCount = okvir;
+            dataGridView1.RowCount = okvir + 1;
 
             BigInteger broj = BigInteger.Parse(tekstZaMenjanje);
             BigInteger[] a = new BigInteger[tekstZaMenjanje.Length];
@@ -112,6 +112,7 @@ namespace Page_Replacement
                 else
                 {
                     broj_zvezdica++;
+                    this.dataGridView1.Rows[okvir].Cells[i].Value = "*";
                 }
 
                 for (j = 0; j < k; j++)

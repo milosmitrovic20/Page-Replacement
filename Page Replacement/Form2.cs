@@ -29,7 +29,7 @@ namespace Page_Replacement
         public void ubaci_u_tabelu(string tekstZaMenjanje, int okvir)
         {
             dataGridView1.ColumnCount = tekstZaMenjanje.Length;
-            dataGridView1.RowCount = okvir;
+            dataGridView1.RowCount = okvir + 1;
 
             BigInteger broj = BigInteger.Parse(tekstZaMenjanje);
             BigInteger[] a = new BigInteger[tekstZaMenjanje.Length];
@@ -101,6 +101,8 @@ namespace Page_Replacement
                         //Color clr = ColorTranslator.FromHtml("#d3d0cb");
                         //dataGridView1.Columns[i].DefaultCellStyle.BackColor = clr;
                     }
+
+                    this.dataGridView1.Rows[okvir].Cells[i].Value = "*";
                 }
             }
 
