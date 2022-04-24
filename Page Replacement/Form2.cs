@@ -26,23 +26,12 @@ namespace Page_Replacement
             forma1.Show();
         }
 
-        public void ubaci_u_tabelu(string tekstZaMenjanje, int okvir)
+        public void ubaci_u_tabelu(List<BigInteger> a, int okvir)
         {
-            dataGridView1.ColumnCount = tekstZaMenjanje.Length;
+            dataGridView1.ColumnCount = a.Count;
             dataGridView1.RowCount = okvir + 1;
 
-            BigInteger broj = BigInteger.Parse(tekstZaMenjanje);
-            BigInteger[] a = new BigInteger[tekstZaMenjanje.Length];
-
-            for (int i = 0; i < tekstZaMenjanje.Length; i++)
-            {
-                a[i] = broj % 10;
-                broj /= 10;
-            }
-
-            Array.Reverse(a);
-
-            for (int i = 0; i < tekstZaMenjanje.Length; i++)
+            for (int i = 0; i < a.Count; i++)
             {
                 dataGridView1.Columns[i].Name = Convert.ToString(a[i]);
                 //dataGridView1.Columns[i].DefaultCellStyle.BackColor = Color.Silver;
@@ -51,23 +40,23 @@ namespace Page_Replacement
 
             // FIFO algoritam
 
-            char[] temp = new char[okvir];
+            BigInteger[] temp = new BigInteger[okvir];
 
             for (int i = 0; i < okvir; i++)
             {
-                temp[i] = ' ';
+                temp[i] = -1;
             }
 
             int broj_zvezdica = 0;
             int indeks = 0;
 
-            for (int i = 0; i < tekstZaMenjanje.Length; i++)
+            for (int i = 0; i < a.Count; i++)
             {
                 bool dostupan = true;
 
                 for (int j = 0; j < okvir; j++)
                 {
-                    if (a[i] == Convert.ToInt32(temp[j] - 48))
+                    if (a[i] == temp[j])
                     {
                         dostupan = false;
                     }
@@ -75,7 +64,7 @@ namespace Page_Replacement
 
                 if (dostupan)
                 {
-                    temp[indeks] = Convert.ToChar((int)a[i] + 48);
+                    temp[indeks] = a[i];
                     indeks = (indeks + 1) % okvir;
 
                     for (int j = 0; j < okvir; j++)
@@ -83,7 +72,22 @@ namespace Page_Replacement
                         //Color clr = ColorTranslator.FromHtml("#d3d0cb");  // povezivanje boja sa hex kodom
                         //dataGridView1.Columns[i].Width = 70;  // podesavanje visine i duzine
                         //dataGridView1.Rows[j].Height = 40;    // podesavanje visine i duzine
-                        this.dataGridView1.Rows[j].Cells[i].Value = Convert.ToString(temp[j]);
+
+                        if (temp[j] == -1)
+                        {
+                            this.dataGridView1.Rows[j].Cells[i].Value = " ";
+                        }
+
+                        else
+                        {
+                            this.dataGridView1.Rows[j].Cells[i].Value = temp[j];
+                        }
+                     
+                        if (Convert.ToString(temp[j]) == dataGridView1.Columns[i].HeaderText)
+                        {
+                            this.dataGridView1.Rows[j].Cells[i].Style.ForeColor = Color.Red;
+                        }
+
                         //this.dataGridView1.ForeColor = Color.Black;  // boja slova
                         //dataGridView1.Columns[i].DefaultCellStyle.BackColor = clr;  // boja pozadine
                     }
@@ -97,7 +101,17 @@ namespace Page_Replacement
                     {
                         //dataGridView1.Columns[i].Width = 70;
                         //dataGridView1.Rows[j].Height = 30;
-                        this.dataGridView1.Rows[j].Cells[i].Value = Convert.ToString(temp[j]);
+
+                        if (temp[j] == -1)
+                        {
+                            this.dataGridView1.Rows[j].Cells[i].Value = " ";
+                        }
+
+                        else
+                        {
+                            this.dataGridView1.Rows[j].Cells[i].Value = temp[j];
+                        }
+
                         //Color clr = ColorTranslator.FromHtml("#d3d0cb");
                         //dataGridView1.Columns[i].DefaultCellStyle.BackColor = clr;
                     }
@@ -114,8 +128,8 @@ namespace Page_Replacement
             // ispis
 
             label2.Text = "Broj pogodaka : " + broj_zvezdica;
-            label3.Text = "Broj promašaja : " + (tekstZaMenjanje.Length - broj_zvezdica);
-            label4.Text = "Ukupan broj referenci : " + tekstZaMenjanje.Length;
+            label3.Text = "Broj promašaja : " + (a.Count - broj_zvezdica);
+            label4.Text = "Ukupan broj referenci : " + a.Count;
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -1,4 +1,6 @@
-﻿namespace Page_Replacement
+﻿using System.Numerics;
+
+namespace Page_Replacement
 {
     public partial class Form1 : Form
     {
@@ -12,14 +14,13 @@
             if (comboBox1.Text == "First In First Out (FIFO)" && !String.IsNullOrEmpty(textBox1.Text) && !String.IsNullOrEmpty(textBox2.Text))
             {
                 string niz = textBox1.Text;
-                niz = niz.Replace(",", "");
+                niz = niz.Replace(",", " ");
                 int n = int.Parse(textBox2.Text);
-                string str = string.Join("", niz.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
-                int[] a = new int[str.Length];
+                List<BigInteger> list = niz.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries).Select(BigInteger.Parse).ToList();
                 this.Hide();
                 Form2 fifoforma = new Form2();
                 fifoforma.Show();
-                fifoforma.ubaci_u_tabelu(str, n);
+                fifoforma.ubaci_u_tabelu(list, n);
             }   
 
             else if (comboBox1.Text == "Optimal (OPT)" && !String.IsNullOrEmpty(textBox1.Text) && !String.IsNullOrEmpty(textBox2.Text))
@@ -40,12 +41,11 @@
                 string niz = textBox1.Text;
                 niz = niz.Replace(",", "");
                 int n = int.Parse(textBox2.Text);
-                string str = string.Join("", niz.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
-                int[] a = new int[str.Length];
+                List<BigInteger> list = niz.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Select(BigInteger.Parse).ToList();
                 this.Hide();
                 Form3 lruforma = new Form3();
                 lruforma.Show();
-                lruforma.ubaci_u_tabelu(str, n);
+                lruforma.ubaci_u_tabelu(list, n);
             }
 
             else

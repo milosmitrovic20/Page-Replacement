@@ -27,6 +27,12 @@ namespace Page_Replacement
 
         public void ubaci_u_tabelu(string tekstZaMenjanje, int okvir)
         {
+            if (tekstZaMenjanje.Length <= 23)
+            {
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            }
+
             dataGridView1.ColumnCount = tekstZaMenjanje.Length;
             dataGridView1.RowCount = okvir + 1;
 
@@ -128,6 +134,7 @@ namespace Page_Replacement
                             }
                         }
                     }
+                    
                     frames[pos] = Convert.ToChar((int)a[i] + 48);
                     faults++;
                 }
@@ -135,6 +142,11 @@ namespace Page_Replacement
                 for (j = 0; j < okvir; ++j)
                 {
                     this.dataGridView1.Rows[j].Cells[i].Value = Convert.ToString(frames[j]);
+
+                    if (Convert.ToString(frames[j]) == dataGridView1.Columns[i].HeaderText)
+                    {
+                        this.dataGridView1.Rows[j].Cells[i].Style.ForeColor = Color.Red;
+                    }
                 }
             }
 

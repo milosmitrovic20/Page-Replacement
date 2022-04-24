@@ -25,23 +25,18 @@ namespace Page_Replacement
             forma1.Show();
         }
 
-        public void ubaci_u_tabelu(string tekstZaMenjanje, int okvir)
+        public void ubaci_u_tabelu(List<BigInteger> a, int okvir)
         {
-            dataGridView1.ColumnCount = tekstZaMenjanje.Length;
-            dataGridView1.RowCount = okvir + 1;
-
-            BigInteger broj = BigInteger.Parse(tekstZaMenjanje);
-            BigInteger[] a = new BigInteger[tekstZaMenjanje.Length];
-
-            for (int i = 0; i < tekstZaMenjanje.Length; i++)
+            if (a.Count <= 23)
             {
-                a[i] = broj % 10;
-                broj /= 10;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             }
 
-            Array.Reverse(a);
+            dataGridView1.ColumnCount = a.Count;
+            dataGridView1.RowCount = okvir + 1;
 
-            for (int i = 0; i < tekstZaMenjanje.Length; i++)
+            for (int i = 0; i < a.Count; i++)
             {
                 dataGridView1.Columns[i].Name = Convert.ToString(a[i]);
                 this.dataGridView1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -56,9 +51,10 @@ namespace Page_Replacement
             int broj_zvezdica = 0;
             temp[k] = (int)a[k];
             this.dataGridView1.Rows[0].Cells[0].Value = Convert.ToString(temp[k]);
+            this.dataGridView1.Rows[0].Cells[0].Style.ForeColor = Color.Red;
             c++;
             k++;
-            for (int i = 1; i < tekstZaMenjanje.Length; i++)
+            for (int i = 1; i < a.Count; i++)
             {
                 c1 = 0;
                 for (j = 0; j < okvir; j++)
@@ -79,7 +75,7 @@ namespace Page_Replacement
                         for (r = 0; r < okvir; r++)
                         {
                             c2[r] = 0;
-                            for (j = i - 1; j < tekstZaMenjanje.Length; j--)
+                            for (j = i - 1; j < a.Count; j--)
                             {
                                 if (temp[r] != a[j])
                                     c2[r]++;
@@ -116,13 +112,20 @@ namespace Page_Replacement
                 }
 
                 for (j = 0; j < k; j++)
+                {
+                    if (Convert.ToString(temp[j]) == dataGridView1.Columns[i].HeaderText)
+                    {
+                        this.dataGridView1.Rows[j].Cells[i].Style.ForeColor = Color.Red;
+                    }
+
                     this.dataGridView1.Rows[j].Cells[i].Value = Convert.ToString(temp[j]);
+                }  
 
                 // ispis
 
                 label2.Text = "Broj pogodaka : " + broj_zvezdica;
-                label3.Text = "Broj promašaja : " + (tekstZaMenjanje.Length - broj_zvezdica);
-                label4.Text = "Ukupan broj referenci : " + tekstZaMenjanje.Length;
+                label3.Text = "Broj promašaja : " + (a.Count - broj_zvezdica);
+                label4.Text = "Ukupan broj referenci : " + a.Count;
             }
 
             foreach (DataGridViewColumn column in dataGridView1.Columns)
