@@ -25,29 +25,18 @@ namespace Page_Replacement
             forma1.Show();
         }
 
-        public void ubaci_u_tabelu(string tekstZaMenjanje, int okvir)
+        public void ubaci_u_tabelu(List<BigInteger> a, int okvir)
         {
-            if (tekstZaMenjanje.Length <= 23)
+            if (a.Count <= 23)
             {
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                 dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             }
 
-            dataGridView1.ColumnCount = tekstZaMenjanje.Length;
+            dataGridView1.ColumnCount = a.Count;
             dataGridView1.RowCount = okvir + 1;
 
-            BigInteger broj = BigInteger.Parse(tekstZaMenjanje);
-            BigInteger[] a = new BigInteger[tekstZaMenjanje.Length];
-
-            for (int i = 0; i < tekstZaMenjanje.Length; i++)
-            {
-                a[i] = broj % 10;
-                broj /= 10;
-            }
-
-            Array.Reverse(a);
-
-            for (int i = 0; i < tekstZaMenjanje.Length; i++)
+            for (int i = 0; i < a.Count; i++)
             {
                 dataGridView1.Columns[i].Name = Convert.ToString(a[i]);
                 this.dataGridView1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -56,21 +45,21 @@ namespace Page_Replacement
             // Optimalni algoritam
 
             int flag1, flag2, flag3, j, k, pos = 0, max, faults = 0;
-            char[] frames = new char[okvir];
+            BigInteger[] frames = new BigInteger[okvir];
             int[] temp = new int[okvir];
 
             for (int i = 0; i < okvir; i++)
             {
-                frames[i] = ' ';
+                frames[i] = -1;
             }
 
-            for (int i = 0; i < tekstZaMenjanje.Length; i++)
+            for (int i = 0; i < a.Count; i++)
             {
                 flag1 = flag2 = 0;
 
                 for (j = 0; j < okvir; ++j)
                 {
-                    if (Convert.ToInt32(frames[j] - 48) == a[i])
+                    if (frames[j] == a[i])
                     {
                         this.dataGridView1.Rows[okvir].Cells[i].Value = "*";
                         flag1 = flag2 = 1;
@@ -82,10 +71,10 @@ namespace Page_Replacement
                 {
                     for (j = 0; j < okvir; ++j)
                     {
-                        if (frames[j] == ' ')
+                        if (frames[j] == -1)
                         {
                             faults++;
-                            frames[j] = Convert.ToChar((int)a[i] + 48);
+                            frames[j] = a[i];
                             flag2 = 1;
                             break;
                         }
@@ -100,9 +89,9 @@ namespace Page_Replacement
                     {
                         temp[j] = -1;
 
-                        for (k = i + 1; k < tekstZaMenjanje.Length; ++k)
+                        for (k = i + 1; k < a.Count; ++k)
                         {
-                            if (Convert.ToInt32(frames[j] - 48) == a[k])
+                            if (frames[j] == a[k])
                             {
                                 temp[j] = k;
                                 break;
@@ -135,13 +124,21 @@ namespace Page_Replacement
                         }
                     }
                     
-                    frames[pos] = Convert.ToChar((int)a[i] + 48);
+                    frames[pos] = a[i];
                     faults++;
                 }
 
                 for (j = 0; j < okvir; ++j)
                 {
-                    this.dataGridView1.Rows[j].Cells[i].Value = Convert.ToString(frames[j]);
+                    if (frames[j] == -1)
+                    {
+                        this.dataGridView1.Rows[j].Cells[i].Value = " ";
+                    }
+
+                    else
+                    {
+                        this.dataGridView1.Rows[j].Cells[i].Value = Convert.ToString(frames[j]);
+                    }
 
                     if (Convert.ToString(frames[j]) == dataGridView1.Columns[i].HeaderText)
                     {
@@ -157,9 +154,9 @@ namespace Page_Replacement
 
             // ispis
 
-            label2.Text = "Broj pogodaka : " + (tekstZaMenjanje.Length - faults);
+            label2.Text = "Broj pogodaka : " + (a.Count - faults);
             label3.Text = "Broj promašaja : " + faults;
-            label4.Text = "Ukupan broj referenci : " + tekstZaMenjanje.Length;
+            label4.Text = "Ukupan broj referenci : " + a.Count;
         }
 
         private void button2_Click(object sender, EventArgs e)

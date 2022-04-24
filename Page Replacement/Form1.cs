@@ -28,12 +28,11 @@ namespace Page_Replacement
                 string niz = textBox1.Text;
                 niz = niz.Replace(",", "");
                 int n = int.Parse(textBox2.Text);
-                string str = string.Join("", niz.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
-                int[] a = new int[str.Length];
+                List<BigInteger> list = niz.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Select(BigInteger.Parse).ToList();
                 this.Hide();
                 Form4 optimalforma = new Form4();
                 optimalforma.Show();
-                optimalforma.ubaci_u_tabelu(str, n);
+                optimalforma.ubaci_u_tabelu(list, n);
             }
 
             else if (comboBox1.Text == "Least Recently Used (LRU)" && !String.IsNullOrEmpty(textBox1.Text) && !String.IsNullOrEmpty(textBox2.Text))
