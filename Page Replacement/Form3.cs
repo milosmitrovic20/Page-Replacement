@@ -44,12 +44,13 @@ namespace Page_Replacement
 
             // LRU algoritam
 
-            int c = 0, c1, j, k = 0, r, t;
-            int[] temp = new int[okvir];
-            int[] b = new int[okvir];
-            int[] c2 = new int[okvir];
+            int c = 0, c1, j, k = 0, r;
+            BigInteger t;
+            BigInteger[] temp = new BigInteger[okvir];
+            BigInteger[] b = new BigInteger[okvir];
+            BigInteger[] c2 = new BigInteger[okvir];
             int broj_zvezdica = 0;
-            temp[k] = (int)a[k];
+            temp[k] = a[k];
             this.dataGridView1.Rows[0].Cells[0].Value = Convert.ToString(temp[k]);
             this.dataGridView1.Rows[0].Cells[0].Style.ForeColor = Color.Red;
             c++;
@@ -67,7 +68,7 @@ namespace Page_Replacement
                     c++;
                     if (k < okvir)
                     {
-                        temp[k] = (int)a[i];
+                        temp[k] = a[i];
                         k++;
                     }
                     else
@@ -100,7 +101,7 @@ namespace Page_Replacement
                         for (r = 0; r < okvir; r++)
                         {
                             if (c2[r] == b[0])
-                                temp[r] = (int)a[i];
+                                temp[r] = a[i];
                         }
                     }
                 }
@@ -119,14 +120,14 @@ namespace Page_Replacement
                     }
 
                     this.dataGridView1.Rows[j].Cells[i].Value = Convert.ToString(temp[j]);
-                }  
-
-                // ispis
-
-                label2.Text = "Broj pogodaka : " + broj_zvezdica;
-                label3.Text = "Broj promašaja : " + (a.Count - broj_zvezdica);
-                label4.Text = "Ukupan broj referenci : " + a.Count;
+                }   
             }
+
+            // ispis
+
+            label2.Text = "Broj pogodaka : " + broj_zvezdica;
+            label3.Text = "Broj promašaja : " + (a.Count - broj_zvezdica);
+            label4.Text = "Ukupan broj referenci : " + a.Count;
 
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
