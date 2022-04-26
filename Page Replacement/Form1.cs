@@ -26,7 +26,7 @@ namespace Page_Replacement
             else if (comboBox1.Text == "Optimal (OPT)" && !String.IsNullOrEmpty(textBox1.Text) && !String.IsNullOrEmpty(textBox2.Text))
             {
                 string niz = textBox1.Text;
-                niz = niz.Replace(",", "");
+                niz = niz.Replace(",", " ");
                 int n = int.Parse(textBox2.Text);
                 List<BigInteger> list = niz.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Select(BigInteger.Parse).ToList();
                 this.Hide();
@@ -38,7 +38,7 @@ namespace Page_Replacement
             else if (comboBox1.Text == "Least Recently Used (LRU)" && !String.IsNullOrEmpty(textBox1.Text) && !String.IsNullOrEmpty(textBox2.Text))
             {
                 string niz = textBox1.Text;
-                niz = niz.Replace(",", "");
+                niz = niz.Replace(",", " ");
                 int n = int.Parse(textBox2.Text);
                 List<BigInteger> list = niz.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Select(BigInteger.Parse).ToList();
                 this.Hide();
